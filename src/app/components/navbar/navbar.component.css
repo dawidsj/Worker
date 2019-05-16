@@ -1,0 +1,11 @@
+.black {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  transition: background-color 1s ease-out;
+}
+nav {
+  position: fixed;
+  transition: background-color 1s ease-out;
+}
+a.nav-link, a.navbar-brand {
+  color:white !important;
+}

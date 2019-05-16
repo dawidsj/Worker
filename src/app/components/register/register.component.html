@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="col-12 welcome">Rejestracja do {{TITLE}} </div>
+  <div class="row justify-content-md-center">
+    <div class="col-8">
+      <form #regForm=ngForm (ngSubmit)="formSubmit()">
+        <div class="form-group" [class.has-error]="name.invalid && name.touched">
+          <label class="control-label" for="exampleName">Podaj imie:</label>
+          <input type="text" class="form-control" name="name" required [(ngModel)]="registerForm.name" #name="ngModel" placeholder="Imie">
+            <div class="help-block alert alert-danger" role="alert" *ngIf="name.errors?.required && name.touched">
+              Imie jest wymagane!
+            </div>
+        </div>
+        <div class="form-group" [class.has-error]="email.invalid && email.touched">
+          <label class="control-label" for="exampleInputEmail1">Podaj adres email:</label>
+          <input type="email" class="form-control" name="email" required email [(ngModel)]="registerForm.email" #email="ngModel" placeholder="E-mail" >
+            <div class="help-block alert alert-danger" role="alert" *ngIf="email.errors?.required && email.touched">
+              Email jest wymagany!
+            </div>
+            <div class="help-block alert alert-danger" role="alert" *ngIf="email.errors?.email && email.touched">
+              Email jest błędny!
+            </div>
+        </div>
+        <div class="form-group" [class.has-error]="password.invalid && password.touched">
+          <label class="control-label" for="examplePassword1">Podaj hasło:</label>
+          <input type="password" class="form-control" name="password" required [(ngModel)]="registerForm.password" #password="ngModel" placeholder="Hasło">
+            <div class="help-block alert alert-danger" role="alert" *ngIf="password.errors?.required && password.touched">
+              Hasło jest wymagane!
+            </div>
+        </div>
+        <div class="form-group" [class.has-error]="password.invalid && password.touched">
+          <label class="control-label" for="examplePassword2">Powtórz hasło:</label>
+          <input type="password" class="form-control" name="repeatPassword" required [(ngModel)]="registerForm.password_confirmation" #repeatPassword="ngModel" placeholder="Powtórz hasło">
+            <div class="help-block alert alert-danger" role="alert" *ngIf="!password.invalid && password.value != repeatPassword.value">
+              Hasła są różne!
+            </div>
+        </div>
+        <button type="submit" value="submit" class="btn btn-primary" [disabled]="regForm.invalid || password.value != repeatPassword.value">Zarejestruj</button>
+      </form>
+    </div>
+  </div>
+
+

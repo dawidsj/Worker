@@ -1,0 +1,9 @@
+.projectName {
+  font-family: 'Lobster', cursive;
+  padding-top: 40vh;
+  text-align: center;
+  color: white;
+  font-size: 50px;
+  opacity: 0.9;
+  letter-spacing: 2px;
+}
