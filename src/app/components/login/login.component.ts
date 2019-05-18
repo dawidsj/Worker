@@ -13,6 +13,7 @@ import {RegisterComponent} from '../register/register.component';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+/**/
 
 export class LoginComponent implements OnInit {
   @ViewChild('registerComponent', { read: ViewContainerRef }) registerComponentRef;
