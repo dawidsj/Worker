@@ -1,7 +1,6 @@
 <div class="container">
-  <div class="col-12 welcome">Rejestracja do {{TITLE}} </div>
-  <div class="row justify-content-md-center">
-    <div class="col-8">
+  <div class="row">
+    <div class="col-12">
       <form #regForm=ngForm (ngSubmit)="formSubmit()">
         <div class="form-group" [class.has-error]="name.invalid && name.touched">
           <label class="control-label" for="exampleName">Podaj imie:</label>
@@ -34,7 +33,8 @@
               Hasła są różne!
             </div>
         </div>
-        <button type="submit" value="submit" class="btn btn-primary" [disabled]="regForm.invalid || password.value != repeatPassword.value">Zarejestruj</button>
+        <label class="control-label" for=""></label>
+        <button type="submit" value="submit" class="btn btn-outline-dark btn-block mr-0 sendRegister" [disabled]="regForm.invalid || password.value != repeatPassword.value">Zarejestruj</button>
       </form>
     </div>
   </div>

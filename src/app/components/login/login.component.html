@@ -1,22 +1,45 @@
-
 <div class="container">
   <div class="row">
-    <div class="col-12 welcome">Logowanie</div>
-      <div class="col-6">
-        <form #loginForm=ngForm (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Podaj login</label>
-            <input type="text" class="form-control" name="email" [(ngModel)]="form.email" placeholder="Login/E-mail">
+      <div class="col-12">
+        <form #loginForm=ngForm (ngSubmit)="onSubmit()" *ngIf="!showRegister">
+          <div class="row">
+            <div class="col-12">
+              <div class="error" *ngIf="error">{{error}}</div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Podaj hasło</label>
-            <input type="password" class="form-control" name="register" [(ngModel)]="form.password" placeholder="Hasło">
+          <div class="form-group" [class.has-error]="login.invalid && login.touched">
+            <!--<label for="exampleInputEmail1">Podaj login</label>-->
+            <input type="text" class="form-control" name="email" required [(ngModel)]="form.email" #login="ngModel" placeholder="E-mail">
+            <div class="help-block alert alert-danger" role="alert" *ngIf="login.errors?.required && login.touched">
+              Login jest wymagany!
+            </div>
           </div>
-          <button type="submit" value="submit" class="btn btn-primary">Zaloguj</button>
+          <div class="form-group" [class.has-error]="password.invalid && password.touched">
+            <!--<label for="exampleInputPassword1">&lt;!&ndash;Podaj hasło&ndash;&gt;</label>-->
+            <input type="password" class="form-control" name="register" required [(ngModel)]="form.password" #password="ngModel" placeholder="Hasło">
+            <div class="help-block alert alert-danger" role="alert" *ngIf="password.errors?.required && password.touched">
+              Hasło jest wymagane!
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-6 mb-3 mb-md-0">
+              <a class="lostPassword" href="">Nie pamiętasz hasła?</a><br>
+            </div>
+            <div class="col-sm-12 col-md-4 offset-md-2">
+              <button type="submit" value="submit" class="btn btn-outline-dark btn-block mr-0 sendLogin" [disabled]="loginForm.invalid">Zaloguj</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <hr>
+              <a class="lostPassword align-content-center" (click)="loadComponent()" href="#">Nie masz jeszcze konta? Kliknij!</a><br>
+            </div>
+          </div>
         </form>
+        <ng-template #registerComponent ngIf="showRegister"></ng-template>
       </div>
   </div>
 </div>
-<div class="col-12 welcome" style="color: black" *ngIf="error">{{error}}</div>
+
 
 

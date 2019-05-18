@@ -1,9 +1,10 @@
-import {Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {RegisterDto} from '../../DTO/repositories/register.dto';
 import {AuthenticateSuccesResponseDto} from '../../DTO/repositories/responses/authenticate.succes.response.dto';
 import {TokenService} from '../../services/token.service';
 import {Router} from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private apiService: ApiService,
               private tokenService: TokenService,
-              private router: Router) {}
+              private router: Router,
+              public viewContainerRef: ViewContainerRef) {}
 
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
@@ -32,8 +34,10 @@ export class RegisterComponent implements OnInit {
   }
   private handleResponse(data: AuthenticateSuccesResponseDto): void {
     console.log(data.token);
+
     this.tokenService.setToken(data.token);
     this.router.navigateByUrl('dashboard');
+    $('#myRegisterModal').click();
     console.log(this.tokenService.getToken());
   }
   private handleError(data): void {

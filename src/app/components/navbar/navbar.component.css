@@ -1,11 +1,15 @@
 .black {
-  background-color: rgba(0, 0, 0, 0.7) !important;
+  background-color: rgba(0, 0, 0, 0.9) !important;
   transition: background-color 1s ease-out;
 }
 nav {
   position: fixed;
   transition: background-color 1s ease-out;
+  background-color: rgba(0, 0, 0, 0.7) !important; ;
+  box-shadow: 1px 0px 10px black;
 }
 a.nav-link, a.navbar-brand {
   color:white !important;
+  cursor: pointer;
 }
+
