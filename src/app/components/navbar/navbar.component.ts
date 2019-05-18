@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import {TokenService} from '../../services/token.service';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +11,8 @@ import * as $ from 'jquery';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public tokenService: TokenService,
+              public router: Router) { }
 
   public ngOnInit() {
     $(window).on('scroll', () => {
@@ -18,5 +22,9 @@ export class NavbarComponent implements OnInit {
         $('nav').removeClass('black');
       }
     });
+  }
+  public logout() {
+    this.tokenService.removeToken();
+    this.router.navigateByUrl('');
   }
 }

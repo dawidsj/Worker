@@ -1,0 +1,24 @@
+.lostPassword {
+  font-size: 16px;
+  color: #00A790;
+  line-height: 20px;
+}
+.lostPassword:hover {
+  color: #00B090;
+}
+.error {
+  font-size: 16px;
+  color: red;
+  font-style: italic;
+  margin-top: 0;
+  padding-bottom: 20px;
+}
+.sendLogin[disabled] {
+  cursor: no-drop;
+  background: lightgrey;
+}
+.sendLogin {
+  background: #28A745;
+  color: white;
+  font-weight: bold;
+}

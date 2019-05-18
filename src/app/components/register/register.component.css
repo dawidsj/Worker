@@ -1,0 +1,9 @@
+.sendRegister[disabled] {
+  cursor: no-drop;
+  background: lightgrey;
+}
+.sendRegister {
+  background: #28A745;
+  color: white;
+  font-weight: bold;
+}
