@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
       this.router.navigateByUrl('dashboard');
+      /**/
     }
   }
 
