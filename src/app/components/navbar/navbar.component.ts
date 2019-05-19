@@ -1,4 +1,4 @@
-import {Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, ComponentFactoryResolver, OnInit, Type, ViewChild, ViewContainerRef} from '@angular/core';
 import * as $ from 'jquery';
 import {TokenService} from '../../services/token.service';
 import {Router} from '@angular/router';
@@ -12,13 +12,19 @@ import {LoginComponent} from '../login/login.component';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  @ViewChild('loginComponent', { read: ViewContainerRef }) loginComponentRef;
-  @ViewChild('registerComponent', { read: ViewContainerRef }) registerComponentRef;
-  public showLogin: boolean = false;
-  public showRegister: boolean = false;
+  @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
+
+  // Keep track of list of generated components for removal purposes
+  components = [];
+
+  // Expose class so that it can be used in the template
+  registerComponentClass = RegisterComponent;
+  loginComponentClass = LoginComponent;
+
   constructor(public tokenService: TokenService,
               public router: Router,
-              private componentFactoryResolver: ComponentFactoryResolver) { }
+              private componentFactoryResolver: ComponentFactoryResolver
+  ) { }
 
   public ngOnInit() {
     $(window).on('scroll', () => {
@@ -28,38 +34,51 @@ export class NavbarComponent implements OnInit {
         $('nav').removeClass('black');
       }
     });
-    $(function() {
-      if ($('body').hasClass('modal-open')) {
-        alert('x');
-      }
-    });
-    window.setInterval(function() {
-      $(function() {
-        if ($('#myLoginModal').hasClass('show')) {
-          alert('x');
-        }
-      });
-    }, 5000);
-    /*$('#myLoginModal').hasClass('show') {
-      /!*$(".modal-body").html("");*!/
-      alert('x');
-    };*/
-/*    $(!'#modalContent').on('click', function(){
-      alert('x');
-    });*/
   }
-  loadLogin() {
-    this.showLogin = true;
-    const factory = this.componentFactoryResolver.resolveComponentFactory(LoginComponent);
-    const ref = this.loginComponentRef.createComponent(factory);
-    ref.changeDetectorRef.detectChanges();
+
+  /**
+   * Loads given component
+   * @param {string} component
+   */
+  loadComponent(component: string) {
+    this.removeComponent(this.registerComponentClass);
+    this.removeComponent(this.loginComponentClass);
+
+    if (component === 'login') {
+      this.addComponent(this.loginComponentClass);
+    } else if (component === 'register') {
+      this.addComponent(this.registerComponentClass);
+    }
   }
-  loadRegister() {
-    this.showRegister = true;
-    const factory = this.componentFactoryResolver.resolveComponentFactory(RegisterComponent);
-    const ref = this.registerComponentRef.createComponent(factory);
-    ref.changeDetectorRef.detectChanges();
+
+  /**
+   * Injects given component
+   * @param {Type<any>} componentClass
+   */
+  addComponent(componentClass: Type<any>) {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
+    const component = this.container.createComponent(componentFactory);
+
+    // Push the component so that we can keep track of which components are created
+    this.components.push(component);
   }
+
+  /**
+   * Removes given component
+   * @param {Type<any>} componentClass
+   */
+  removeComponent(componentClass: Type<any>) {
+    // Find the component
+    const component = this.components.find((component) => component.instance instanceof componentClass);
+    const componentIndex = this.components.indexOf(component);
+
+    if (componentIndex !== -1) {
+      // Remove component from both view and array
+      this.container.remove(this.container.indexOf(component));
+      this.components.splice(componentIndex, 1);
+    }
+  }
+
   public logout() {
     this.tokenService.removeToken();
     this.router.navigateByUrl('');

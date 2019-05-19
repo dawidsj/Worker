@@ -9,10 +9,10 @@
             <a class="nav-link" routerLink="">Strona Główna</a>
           </li>
           <li class="nav-item mx-3" *ngIf="!tokenService.getToken()">
-            <a class="nav-link" data-toggle="modal" data-target="#myLoginModal" id="registerId" (click)="loadRegister()">Rejestracja</a>
+            <a class="nav-link" data-toggle="modal" data-target="#myLoginModal" id="registerId" (click)="loadComponent('register')">Rejestracja</a>
           </li>
           <li class="nav-item mx-3" *ngIf="!tokenService.getToken()">
-            <a class="nav-link" data-toggle="modal" data-target="#myLoginModal" (click)="loadLogin()">Logowanie</a>
+            <a class="nav-link" data-toggle="modal" data-target="#myLoginModal" (click)="loadComponent('login')">Logowanie</a>
           </li>
           <li class="nav-item mx-3" *ngIf="tokenService.getToken()">
             <a class="nav-link" routerLink="dashboard">Dashboard</a>
@@ -32,8 +32,7 @@
           <h5 class="modal-title">Zaloguj się/Zarejestruj</h5>
         </div>
         <div class="modal-body">
-          <ng-template #loginComponent ngIf="showLogin" ></ng-template>
-          <ng-template #registerComponent ngIf="showRegister"></ng-template>
+          <ng-template #container></ng-template>
         </div>
       </div>
     </div>

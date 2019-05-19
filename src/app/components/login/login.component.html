@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
       <div class="col-12">
+        <ng-template #registerComponent></ng-template>
         <form #loginForm=ngForm (ngSubmit)="onSubmit()" *ngIf="!showRegister">
           <div class="row">
             <div class="col-12">
