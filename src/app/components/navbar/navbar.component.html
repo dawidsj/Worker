@@ -9,10 +9,10 @@
             <a class="nav-link" routerLink="">Strona Główna</a>
           </li>
           <li class="nav-item mx-3" *ngIf="!tokenService.getToken()">
-            <a class="nav-link" data-toggle="modal" data-target="#myRegisterModal" id="registerId">Rejestracja</a>
+            <a class="nav-link" data-toggle="modal" data-target="#myLoginModal" id="registerId" (click)="loadRegister()">Rejestracja</a>
           </li>
           <li class="nav-item mx-3" *ngIf="!tokenService.getToken()">
-            <a class="nav-link" data-toggle="modal" data-target="#myLoginModal" >Logowanie</a>
+            <a class="nav-link" data-toggle="modal" data-target="#myLoginModal" (click)="loadLogin()">Logowanie</a>
           </li>
           <li class="nav-item mx-3" *ngIf="tokenService.getToken()">
             <a class="nav-link" routerLink="dashboard">Dashboard</a>
@@ -25,30 +25,32 @@
     </div>
   </nav>
 
-  <div class="modal fade " id="myLoginModal" role="dialog">
+  <div class="modal fade" id="myLoginModal" role="dialog">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
+      <div class="modal-content" id="modalContent">
         <div class="modal-header">
-          <h5 class="modal-title">Zaloguj się</h5>
+          <h5 class="modal-title">Zaloguj się/Zarejestruj</h5>
         </div>
         <div class="modal-body">
-          <app-login></app-login>
+          <ng-template #loginComponent ngIf="showLogin" ></ng-template>
+          <ng-template #registerComponent ngIf="showRegister"></ng-template>
         </div>
       </div>
     </div>
   </div>
-  <div class="modal fade " id="myRegisterModal" role="dialog">
+
+ <!-- <div class="modal fade " id="myRegisterModal" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Zarejestruj się</h5>
         </div>
         <div class="modal-body">
-          <app-register></app-register>
+
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 
 
 
