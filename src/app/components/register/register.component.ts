@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {RegisterDto} from '../../DTO/repositories/register.dto';
-import {AuthenticateSuccesResponseDto} from '../../DTO/repositories/responses/authenticate.succes.response.dto';
+import {AuthenticateSuccessResponseDto} from '../../DTO/repositories/responses/authenticate.success.response.dto';
 import {TokenService} from '../../services/token.service';
 import {Router} from '@angular/router';
 import * as $ from 'jquery';
@@ -28,11 +28,11 @@ export class RegisterComponent implements OnInit {
   formSubmit(): void {
     console.log(this.registerForm);
     this.apiService.register(this.registerForm).subscribe(
-      (data: AuthenticateSuccesResponseDto) => this.handleResponse(data),
+      (data: AuthenticateSuccessResponseDto) => this.handleResponse(data),
       error => this.handleError(error)
     );
   }
-  private handleResponse(data: AuthenticateSuccesResponseDto): void {
+  private handleResponse(data: AuthenticateSuccessResponseDto): void {
     console.log(data.token);
 
     this.tokenService.setToken(data.token);

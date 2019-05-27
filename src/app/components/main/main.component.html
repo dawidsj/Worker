@@ -1,26 +1,50 @@
-<header>
-<div class="container">
-  <div class="verticalAlign">
-    <div class="projectName">
-      Projekt Worker
-    </div>
-    <div class="projectMotto">
-      Niech twoje plany będą zawsze na swoim miejscu!
+<main>
+  <header>
+  <div class="container name-motto">
+    <div class="row">
+      <div class="projectName col-12">
+        <!--Projekt Worker-->
+      </div>
+      <div class="projectMotto col-12">
+        <!--Niech twoje plany będą zawsze na swoim miejscu!-->
+      </div>
     </div>
   </div>
 
-   <!-- <div class="row">
-      <div class="col-lg-4">
-        <a class="btn btn-light" routerLink="login">Logowanie</a>
+    <span class="arrow">
+     <i class="fas fa-angle-down"></i>
+   </span>
+  </header>
+  <section class="mainInfo" >
+    <div class="container" data-aos="zoom-in" data-aos-duration="750">
+      <div class="row">
+        <div class="col-4">
+          <div class="counter" >
+            <app-counter [from]=0 [to]=75 [of]=75 [animationTime]="1500" [delay]="0" circleColor="#C70039" animationType="inOutCirc" mode="viewport"></app-counter>
+          </div>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem blanditiis dolorem harum officiis perspiciatis possimus quasi quis quisquam ullam? Accusamus alias, aliquid doloremque dolores minus mollitia nisi voluptatibus. Nobis!
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dignissimos dolorem, ea eos expedita id incidunt ipsa iure minus molestiae nisi nobis nostrum odio quaerat quisquam saepe sit temporibus voluptatum.
+        </div>
+        <div class="col-4">
+          <div class="counter" >
+            <app-counter [from]=0 [to]="200" [of]="200" [animationTime]="3500" [delay]="0" circleColor="#900C3F" animationType="inOutCirc" mode="viewport"></app-counter>
+          </div>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores consequatur eaque earum fugiat incidunt, iste iure maxime molestias numquam odio perspiciatis porro quaerat, quasi, quibusdam quis quos sed temporibus totam!
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aperiam assumenda aut beatae dicta doloremque eaque earum expedita explicabo inventore modi natus, odit omnis rem repellat tempora tempore voluptatum!
+        </div>
+        <div class="col-4">
+          <div class="counter">
+            <app-counter [from]=0 [to]=1000 [of]=1000 [animationTime]="5000" [delay]="0" circleColor="#581845" animationType="inOutCirc" mode="viewport"></app-counter>
+          </div>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur cumque eligendi expedita ipsam iusto magnam molestiae nostrum optio quaerat quas quibusdam quos rerum, unde. Cum ipsam nihil nisi sapiente velit!
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam at eius fuga harum id iusto, libero nisi nostrum officiis, soluta vel veniam, voluptas. Dolorum, excepturi hic ipsa itaque recusandae tempore!,
+        </div>
       </div>
-      <div class="col-lg-4">
-        <a class="btn btn-light" routerLink="register">Rejestracja</a>
-      </div>
-      <div class="col-lg-4">
-        <a class="btn btn-light" routerLink="dashboard">Dashboard</a>
-      </div>
-    </div>-->
+    </div>
+  </section>
 
-</div>
-</header>
-XD
+</main>
+<script>
+  AOS.init();
+</script>
+

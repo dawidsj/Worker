@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {TokenService} from '../../services/token.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {LoginDto} from '../../DTO/repositories/login.dto';
-import {AuthenticateSuccesResponseDto} from '../../DTO/repositories/responses/authenticate.succes.response.dto';
+import {AuthenticateSuccessResponseDto} from '../../DTO/repositories/responses/authenticate.success.response.dto';
 import * as $ from 'jquery';
 import {RegisterComponent} from '../register/register.component';
 
@@ -42,12 +42,12 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.spinner.show();
     this.apiService.login(this.form).subscribe(
-      (data: AuthenticateSuccesResponseDto) => this.handleResponse(data),
+      (data: AuthenticateSuccessResponseDto) => this.handleResponse(data),
       error => this.handleError(error)
     );
   }
 
-  private handleResponse(data: AuthenticateSuccesResponseDto): void {
+  private handleResponse(data: AuthenticateSuccessResponseDto): void {
     console.log(data.token);
     $('#myLoginModal').click();
     this.tokenService.setToken(data.token);

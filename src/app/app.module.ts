@@ -14,6 +14,7 @@ import {ServicesModule} from './services/services.module';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeaderComponent } from './components/header/header.component';
+import {CounterModule} from 'angular-circle-counter';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { HeaderComponent } from './components/header/header.component';
     HttpClientModule,
     ServicesModule,
     NgxSpinnerModule,
+    CounterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

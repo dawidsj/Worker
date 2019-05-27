@@ -29,7 +29,7 @@
         <div class="form-group" [class.has-error]="password.invalid && password.touched">
           <label class="control-label" for="examplePassword2">Powtórz hasło:</label>
           <input type="password" class="form-control" name="repeatPassword" required [(ngModel)]="registerForm.password_confirmation" #repeatPassword="ngModel" placeholder="Powtórz hasło">
-            <div class="help-block alert alert-danger" role="alert" *ngIf="!password.invalid && password.value != repeatPassword.value">
+            <div class="help-block alert alert-danger" role="alert" *ngIf="!password.invalid && password.value != repeatPassword.value && repeatPassword.value.length > 0">
               Hasła są różne!
             </div>
         </div>

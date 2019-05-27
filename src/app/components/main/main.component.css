@@ -1,34 +1,58 @@
+.name-motto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
 .projectName {
-  font-family: 'Raleway', sans-serif;
   color: white;
+  font-family: 'Raleway', sans-serif;
   font-size: 62px;
   opacity: 0.9;
   letter-spacing: 2px;
-  vertical-align: center;
   font-weight: bold;
   text-shadow: 3px 3px 6px black;
+
+}
+.projectName:after {
+  content: 'Projekt Worker';
 }
 .projectMotto {
   color: white;
   font-family: 'Raleway', sans-serif;
   font-size: 26px;
   text-shadow: 3px 3px 4px black;
+  margin-top: 50px;
+}
+.projectMotto:after {
+  content: 'Niech twoje plany będą zawsze na swoim miejscu!';
 }
 header {
-/*  padding-top: 60px;*/
+  text-align: center;
   height: 100vh;
-  line-height: 90vh;
-  position: relative;
   opacity: 1;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-image: url('~src/assets/images/1.jpg');
-  text-align: center;
+  background-image: url('~src/assets/images/4.png');
 }
-.verticalAlign {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 100px;
+.mainInfo {
+  padding-top: 15px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url('~src/assets/images/4white.png');
+}
+.counter {
+  text-align: center !important;
+  margin-bottom: 15px;
+}
+.arrow {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  bottom: 0;
+
 }
