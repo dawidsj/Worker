@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-12">
       <form #regForm=ngForm (ngSubmit)="formSubmit()">
+        <div class="error" *ngIf="error">{{error}}</div>
         <div class="form-group" [class.has-error]="name.invalid && name.touched">
           <label class="control-label" for="exampleName">Podaj imie:</label>
           <input type="text" class="form-control" name="name" required [(ngModel)]="registerForm.name" #name="ngModel" placeholder="Imie">

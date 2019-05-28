@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
     ref.changeDetectorRef.detectChanges();
   }
   onSubmit(): void {
-    this.spinner.show();
     this.apiService.login(this.form).subscribe(
       (data: AuthenticateSuccessResponseDto) => this.handleResponse(data),
       error => this.handleError(error)
@@ -48,12 +47,9 @@ export class LoginComponent implements OnInit {
   }
 
   private handleResponse(data: AuthenticateSuccessResponseDto): void {
-    console.log(data.token);
     $('#myLoginModal').click();
     this.tokenService.setToken(data.token);
     this.router.navigateByUrl('dashboard');
-    this.spinner.hide();
-    console.log(this.tokenService.getToken());
   }
 
   private handleError(data): void {

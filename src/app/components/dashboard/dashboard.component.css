@@ -1,3 +1,26 @@
-p {
+main {
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url('~src/assets/images/4.png');
   padding-top: 100px;
+  color: white;
+}
+.board {
+  background-color: lightgray;
+  min-height: 75px;
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Raleway', sans-serif;
+  border-radius: 10px;
+  color: black;
+}
+.board::first-letter {
+  text-transform: uppercase;
+
+}
+.board:hover {
+  border: 1px white solid;
 }

@@ -44,6 +44,7 @@ header {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-image: url('~src/assets/images/4white.png');
+  height: 75vh;
 }
 .counter {
   text-align: center !important;
@@ -54,5 +55,18 @@ header {
   font-size: 30px;
   position: absolute;
   bottom: 0;
-
+  animation: arrow-Animation 0.5s linear alternate infinite;
+}
+@keyframes arrow-Animation {
+  0%   {bottom: 0px;}
+  100% {bottom: 10px;}
+}
+.nextInfo {
+  padding-top: 15px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url('~src/assets/images/4.png');
+  height: 75vh;
 }

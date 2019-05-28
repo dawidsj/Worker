@@ -5,6 +5,7 @@ import {AuthenticateSuccessResponseDto} from '../../DTO/repositories/responses/a
 import {TokenService} from '../../services/token.service';
 import {Router} from '@angular/router';
 import * as $ from 'jquery';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,8 @@ export class RegisterComponent implements OnInit {
   constructor(private apiService: ApiService,
               private tokenService: TokenService,
               private router: Router,
-              public viewContainerRef: ViewContainerRef) {}
+              public viewContainerRef: ViewContainerRef,
+              private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
@@ -33,14 +35,12 @@ export class RegisterComponent implements OnInit {
     );
   }
   private handleResponse(data: AuthenticateSuccessResponseDto): void {
-    console.log(data.token);
-
+    $('#myLoginModal').click();
     this.tokenService.setToken(data.token);
     this.router.navigateByUrl('dashboard');
-    $('#myRegisterModal').click();
-    console.log(this.tokenService.getToken());
   }
   private handleError(data): void {
+    this.spinner.hide();
     this.error = JSON.stringify(data.error.error);
   }
 }

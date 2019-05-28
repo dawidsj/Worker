@@ -1,5 +1,27 @@
-<p>
-  dashboard works!
-  Elo {{name}}
-  <button type="submit" value="submit" class="btn btn-primary" (click)="logout()">Wyloguj</button>
-</p>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p>
+          <button type="button" class="btn btn-outline-light float-right">Stwórz nową tablicę</button>
+        </p>
+      </div>
+    </div>
+      <div class="col-12">
+        <p *ngIf="ownerBoards.length > 0">
+          Twoje tablice:
+        </p>
+        <p *ngIf="ownerBoards.length === 0">Niestety nie posiadasz jeszcze swoich tablic. <br> Stwórz nową już teraz!</div>
+        <div class="owner-boards">
+          <div class="row justify-content-around">
+            <div class="board col-3 col-offset-1 my-5 mx-auto" *ngFor="let ownerBoard of ownerBoards" >
+              {{ownerBoard.name}}<br>
+              Data utworzenia: {{ownerBoard.created_at}}
+            </div>
+          </div>
+        </div>
+      <div class="col-12">
+        <p>Tablice do których zostałeś dodany:</p>
+      </div>
+  </div>
+</main>

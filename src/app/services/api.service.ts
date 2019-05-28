@@ -16,21 +16,29 @@ export class ApiService {
   public login(data: LoginDto) {
    return this.httpClient.post(environment.APIEndpoint + 'api/login', data);
   }
+
   public register(data: RegisterDto) {
     return this.httpClient.post( environment.APIEndpoint + 'api/register', data);
   }
+
   public getUser(): Observable<any> {
     const httpHeaders = new HttpHeaders({
       'Authorization': 'Bearer ' + this.tokenService.getToken()
     });
-
     return this.httpClient.post(environment.APIEndpoint + 'api/user', null, {headers: httpHeaders, observe: 'response'});
   }
+
   public getOwnerBoards(): Observable<any> {
     const httpHeaders = new HttpHeaders({
       'Authorization': 'Bearer ' + this.tokenService.getToken()
     });
-
     return this.httpClient.post(environment.APIEndpoint + 'api/user/boards/owner', null, {headers: httpHeaders, observe: 'response'});
+  }
+
+  public getParticipantBoards(): Observable<any> {
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.tokenService.getToken()
+    });
+    return this.httpClient.post(environment.APIEndpoint + 'api/user/boards/participant', null, {headers: httpHeaders, observe: 'response'});
   }
 }
