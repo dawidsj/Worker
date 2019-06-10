@@ -1,27 +1,61 @@
 <main>
   <div class="container">
-    <div class="row">
       <div class="col-12">
         <p>
-          <button type="button" class="btn btn-outline-light float-right">Stwórz nową tablicę</button>
+          <i class="fas fa-clipboard-list"></i> &nbsp; Twoje tablice: <button type="button" data-toggle="modal" data-target="#create-board" class="btn btn-outline-light float-right">Stwórz nową tablicę</button>
         </p>
-      </div>
-    </div>
-      <div class="col-12">
-        <p *ngIf="ownerBoards.length > 0">
-          Twoje tablice:
-        </p>
-        <p *ngIf="ownerBoards.length === 0">Niestety nie posiadasz jeszcze swoich tablic. <br> Stwórz nową już teraz!</div>
-        <div class="owner-boards">
-          <div class="row justify-content-around">
-            <div class="board col-3 col-offset-1 my-5 mx-auto" *ngFor="let ownerBoard of ownerBoards" >
-              {{ownerBoard.name}}<br>
-              Data utworzenia: {{ownerBoard.created_at}}
+
+        <div class="modal fade" id="create-board" role="dialog">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content" id="modalContent">
+              <div class="modal-header">
+                <h5 class="modal-title">Stwórz nową tablicę.</h5>
+              </div>
+              <div class="modal-body">
+                <form #createBoardForm=ngForm (ngSubmit)="onSubmit()" >
+                  <div class="form-group" [class.has-error]="name.invalid && name.touched">
+                    <label for="exampleInputEmail1">Podaj nazwę tablicy:</label>
+                    <input type="email" class="form-control" name="name" id="exampleInputEmail1" placeholder="..." required [(ngModel)]="boardForm.name" #name="ngModel">
+                  </div>
+                  <button type="submit" class="btn btn-primary" [disabled]="createBoardForm.invalid">Stwórz</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
+
+        <p *ngIf="ownerBoards.length === 0">Niestety nie posiadasz jeszcze swoich tablic. <br> <!--Stwórz nową już teraz!--></div>
+        <div class="owner-boards">
+          <div class="row justify-content-around">
+            <table class="table table-dark" id="boards" *ngIf="ownerBoards.length > 0" >
+              <thead>
+                <tr>
+                  <td>#</td>
+                  <td>Nazwa</td>
+                  <td>Data utworzenia</td>
+                  <td>Ostatnia aktualizacja</td>
+                  <td>Akcje</td>
+                </tr>
+              </thead>
+              <tbody *ngFor="let ownerBoard of ownerBoards">
+                <tr class="table-active">
+                  <td>{{ownerBoard.id}}</td>
+                  <td>{{ownerBoard.name}}</td>
+                  <td>{{ownerBoard.created_at}}</td>
+                  <td>{{ownerBoard.updated_at}}</td>
+                  <td>
+                    <i class="fas fa-user-plus" title="Dodaj użytkownika."></i> &nbsp;
+                    <i class="fas fa-user-edit" title="Edytuj użytkowników."></i> &nbsp;
+                    <i class="fas fa-trash-alt" title="Usuń tablice."></i> &nbsp;
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <br>
       <div class="col-12">
-        <p>Tablice do których zostałeś dodany:</p>
+        <p> <i class="fas fa-clipboard"></i> &nbsp; Tablice do których zostałeś dodany:</p>
       </div>
-  </div>
+    </div>
 </main>

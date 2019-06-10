@@ -7,6 +7,7 @@ main {
   background-image: url('~src/assets/images/4.png');
   padding-top: 100px;
   color: white;
+  font-size: 20px;
 }
 .board {
   background-color: lightgray;
@@ -19,8 +20,13 @@ main {
 }
 .board::first-letter {
   text-transform: uppercase;
-
 }
 .board:hover {
   border: 1px white solid;
+}
+#boards {
+  font-size: 16px;
+}
+#create-board {
+  color: black;
 }

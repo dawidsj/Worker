@@ -1,6 +1,4 @@
 import {Component, NgModule, OnInit} from '@angular/core';
-import {CounterModule} from 'angular-circle-counter';
-
 
 @Component({
   selector: 'app-main',
